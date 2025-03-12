@@ -1,12 +1,35 @@
+@import "/css/theme.css";
+
+i.fa-brands {
+  color: var(--primary-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary);
+
+  &:hover, &.active {
+    text-decoration: underline;
+    text-decoration-thickness: 0.25rem;
+    text-decoration-color: var(--primary-color);
+    text-underline-offset: 0.5rem;
+  }
+
+  &:hover {
+    text-decoration-color: var(--primary-color-hover);
+  }
+}
+
 body {
     margin: 20px 40px;
-    color: #666;
+    background-color: var(--background-color);
+    color: var(--secondary-color);
 }
 
 main {
     margin: 0 auto;
     height: 100%;
-    border-top: 20px solid #666;
+    border-top: 20px solid var(--secondary-color);
 }
 
 header {
@@ -23,7 +46,7 @@ header > p {
 }
 
 .red {
-    color: #cc3333;
+    color: var(--primary-color);
 }
 
 .links-wrapper {
@@ -42,18 +65,13 @@ header > p {
     margin: 0 0.5em;
 }
 
-.link a {
-    color: black;
-    text-decoration: none;
-}
-
 section {
     margin: 20px 0;
 }
 
 section > h2 {
     margin: 0;
-    border-bottom: 2px solid #cc3333;
+    border-bottom: 0.25rem solid var(--primary-color);
 }
 
 section > p {
@@ -90,10 +108,11 @@ section > article {
 .title {
     flex-basis: 100%;
     margin: 0 10px;
+    color: var(--primary-color);
 }
 
 .duration {
-    margin: 0 10px;
+    margin: 0 -10px 10px 0;
 }
 
 article > div {

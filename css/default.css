@@ -1,3 +1,5 @@
+@import "/css/theme.css";
+
 html {
   font-size: 62.5%;
 }
@@ -5,10 +7,31 @@ html {
 body {
   font-size: 1.6rem;
   color: #000;
+  background-color: var(--background-color);
 }
 
 header {
-  border-bottom: 0.2rem solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  &:hover, &.active {
+    text-decoration: underline;
+    text-decoration-thickness: 0.25rem;
+    text-decoration-color: var(--primary-color);
+    text-underline-offset: 0.5rem;
+  }
+
+  &:hover {
+    text-decoration-color: var(--primary-color-hover);
+  }
+
+  &:visited {
+    color: var(--secondary-color);
+  }
 }
 
 nav {
@@ -16,9 +39,13 @@ nav {
   a {
     font-size: 1.8rem;
     font-weight: bold;
-    color: black;
+    color: var(--secondary-color);
     text-decoration: none;
     text-transform: uppercase;
+
+    &:hover,&.active {
+      text-decoration-thickness: 0.5rem;
+    }
 
     svg {
       width: 1em;
@@ -45,6 +72,7 @@ h1 {
 }
 
 h2 {
+  color: var(--secondary-color);
   font-size: 2rem;
 }
 
@@ -144,7 +172,23 @@ article .header {
     text-align: left;
   }
   .logo a {
-    float: left;
-    font-size: 1.8rem;
+    font-family: sans;
+    text-decoration: underline;
+    flex-grow: 1;
+    font-size: 2.8rem;
+    span {
+      text-decoration: underline;
+      color: var(--primary-color);
+    }
   }
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: 0.25rem solid var(--primary-color);
+}
+
+hr {
+  border: 0.25rem solid var(--primary-color);
 }

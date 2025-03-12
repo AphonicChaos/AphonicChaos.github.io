@@ -26,9 +26,9 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
+            let indexCtx = listField "posts" postCtx (return posts)
+                        <> constField "is-home" ""
+                        <> defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
@@ -38,8 +38,11 @@ main = hakyll $ do
     match (fromList ["portfolio.html"]) $ do
       route $ idRoute
       compile $ do
+          let portfolioCtx = constField "is-portfolio" "" 
+                          <> defaultContext
+                  
           getResourceBody
-              >>= loadAndApplyTemplate "templates/default.html" defaultContext
+              >>= loadAndApplyTemplate "templates/default.html" portfolioCtx
               >>= relativizeUrls
 
     match (fromList ["resume.html"]) $ do
@@ -51,10 +54,10 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archive"             `mappend`
-                    defaultContext
+            let archiveCtx = listField "posts" postCtx (return posts) 
+                          <> constField "title" "Archive"             
+                          <> constField "is-archive" ""
+                          <> defaultContext
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
