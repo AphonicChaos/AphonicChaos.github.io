@@ -21,7 +21,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    matchMetadata "posts/*" (not . isDraft) $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -64,3 +64,6 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+isDraft :: Metadata -> Bool
+isDraft = maybe False (== "true") . lookupString "draft"

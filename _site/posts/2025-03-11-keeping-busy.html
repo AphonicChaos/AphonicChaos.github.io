@@ -29,30 +29,72 @@
         
     </section>
     <section>
-        <h2 id="haskell">Haskell</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">{-# LANGUAGE OverloadedStrings #-}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Text.Printf</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    (name<span class="op">:</span>) <span class="ot">&lt;-</span> getArgs</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    printf <span class="st">&quot;Hello, %s&quot;</span> name</span></code></pre></div>
-<h2 id="python">Python</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> sys.argv[<span class="dv">0</span>]</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!&quot;</span>)</span></code></pre></div>
-<h2 id="c">C</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Hello, </span><span class="sc">%s</span><span class="st">!&quot;</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+        <p>I’ve been trying to keep busy after losing my job last week. Aside from
+submitting about ten applications a day, I’ve been doing a <em>lot</em> of exploring.</p>
+<h1 id="losing-my-nerve">Losing my nerve</h1>
+<p>Having been gainfully employed for several years straight, I’ve realized that
+nearly all of the code that I’ve written has been proprietary, leaving me unable
+to share any of it. The few exceptions have been contributions to open source
+projects that we relied on at work. As such, I’ve been perusing over my
+bookshelf and cleaning up my GitHub in preparation to populate it with projects
+that are actively being worked on.</p>
+<h2 id="the-luxury-of-choice">The luxury of choice</h2>
+<p>One benefit of personal projects is that for the most part, I have the luxury of
+time. As such, I don’t have to make pragmatic choices. That is, I don’t have to
+choose a stack that’s more convenient for my team, choose a library because it’s
+familiar or popular, choose a programming language that’s ubiquitous, or even
+stick to the same field that I have been at work.</p>
+<p>This is liberating because it’s given me the opportunity to experiment with
+different options rapidly. I don’t feel guilt about having to throw away some
+code if I eventually determine that a given tool isn’t right for the job at
+hand. In one particular Haskell project of mine, I’ve been able to iterate
+through a number of libraries:</p>
+<ul>
+<li>routing:
+<ul>
+<li><a href="https://hackage.haskell.org/package/scotty">scotty</a></li>
+<li><a href="https://www.servant.dev/">servant</a></li>
+</ul></li>
+<li>html
+<ul>
+<li><a href="https://chrisdone.com/posts/lucid/">lucid</a></li>
+<li><a href="https://hackage.haskell.org/package/web-view">web-view</a></li>
+</ul></li>
+<li>interactivity:
+<ul>
+<li><a href="https://htmx.org/">htmx</a></li>
+<li><a href="https://hackage.haskell.org/package/hyperbole">hyperbole</a></li>
+</ul></li>
+<li>database
+<ul>
+<li><a href="https://www.yesodweb.com/book/persistent">persistent</a></li>
+<li><a href="https://haskell-beam.github.io/beam/">beam</a></li>
+<li><a href="https://hackage.haskell.org/package/hasql-1.7.0.2">hasql</a></li>
+<li><a href="https://rel8.readthedocs.io/en/latest/">rel8</a></li>
+<li><a href="https://hackage.haskell.org/package/postgresql-simple-0.7.0.0/docs/Database-PostgreSQL-Simple.html">postgresql-simple</a></li>
+</ul></li>
+</ul>
+<p>I ended up settling on <code>Hyperbole</code> with <code>postgresql-simple</code>. I’ll likely write
+about that project in more detail once it’s polished.</p>
+<h2 id="broadening-my-horizons">Broadening my horizons</h2>
+<p>Back when I first started contributing to open source, I did a lot of work on
+SDKs like <a href="https://kivy.org/">kivy</a>, and dipped my toes into mobile development
+– namely <a href="https://maemo.org/">Maemo</a> and Android. I even helped contribute to a
+couple of open source video games like
+<a href="https://tshirtman.github.io/ultimate-smash-friends/">“Ultimate Smash Friends”</a>,
+and wrote a few prototypes for a generic system for playing open source <a href="https://wtactics.org/">Trading
+Card Games</a>.</p>
+<p>For the better part of my professional career, however, I’ve been focused on web
+development and education. Over this last few weeks, I’ve been able to get back
+to some of my neglected interests. Namely, video games and compilers. For the
+next several months, regardless of how the job search goes, my plan is to work
+on a few projects to keep myself motivated:
+- write a c compiler
+- finish this website
+- write a game engine</p>
+<p>I’ll write about each of these separately, but the main goal is to scratch some
+itches I’ve had in those fields, and narrow the gap to some of my more lofty
+ideas.</p>
     </section>
 </article>
 
