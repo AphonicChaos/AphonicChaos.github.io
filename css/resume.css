@@ -8,7 +8,8 @@ a {
   text-decoration: none;
   color: var(--secondary);
 
-  &:hover, &.active {
+  &:hover,
+  &.active {
     text-decoration: underline;
     text-decoration-thickness: 0.25rem;
     text-decoration-color: var(--primary-color);
@@ -21,113 +22,113 @@ a {
 }
 
 body {
-    margin: 20px 40px;
-    background-color: var(--background-color);
-    color: var(--secondary-color);
+  margin: 20px 40px;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
 }
 
 main {
-    margin: 0 auto;
-    height: 100%;
-    border-top: 20px solid var(--secondary-color);
+  margin: 0 auto;
+  height: 100%;
+  border-top: 20px solid var(--secondary-color);
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }
 
-header > h1 {
-    margin: 0;
-    font-size: 48pt;
+header>h1 {
+  margin: 0;
+  font-size: 48pt;
 }
 
-header > p {
-    margin-top: 0;
+header>p {
+  margin-top: 0;
 }
 
 .red {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .links-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .links {
-    list-style: none;
-    margin-bottom: 1em;
-    padding: 0;
+  list-style: none;
+  margin-bottom: 1em;
+  padding: 0;
 }
 
 .link {
-    display: inline;
-    margin: 0 0.5em;
+  display: inline;
+  margin: 0 0.5em;
 }
 
 section {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
-section > h2 {
-    margin: 0;
-    border-bottom: 0.25rem solid var(--primary-color);
+section>h2 {
+  margin: 0;
+  border-bottom: 0.25rem solid var(--primary-color);
 }
 
-section > p {
-    margin-left: 100px;
+section>p {
+  margin-left: 100px;
 }
 
 .skills {
-    margin-left: 100px;
-    display: flex;
-    flex-wrap: wrap;
+  margin-left: 100px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .skill {
-    margin: 0 40px 0 0;
+  margin: 0 40px 0 0;
 
 }
 
-.skill > h4 {
-    font-size: 14pt;
-    margin-bottom: 0;
+.skill>h4 {
+  font-size: 14pt;
+  margin-bottom: 0;
 }
 
-section > article {
-    margin: 10px 10px 10px 100px;
-    display: flex;
-    flex-wrap: wrap;
+section>article {
+  margin: 10px 10px 10px 100px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .company {
-    flex: 1;
-    margin: 0 10px;
+  flex: 1;
+  margin: 0 10px;
 }
 
 .title {
-    flex-basis: 100%;
-    margin: 0 10px;
-    color: var(--primary-color);
+  flex-basis: 100%;
+  margin: 0 10px;
+  color: var(--primary-color);
 }
 
 .duration {
-    margin: 0 -10px 10px 0;
+  margin: 0 -10px 10px 0;
 }
 
-article > div {
-    margin: 10px;
+article>div {
+  margin: 10px;
 }
 
 ul {
-    flex-basis: 100%;
-    margin: 10px 0 0 0;
+  flex-basis: 100%;
+  margin: 10px 0 0 0;
 }
 
 @media print {
-    .page-break {
-        page-break-after: always;
-    }
+  .page-break {
+    page-break-after: always;
+  }
 }
 
 @page {
