@@ -4,16 +4,24 @@ title: Keeping Busy
 
 ## Haskell
 ```haskell
+{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
+import Text.Printf
+
 main :: IO ()
-main = putStrLn "Hello, World!"
+main = do 
+    (name:) <- getArgs
+    printf "Hello, %s" name
 ```
 
 ## Python
 ```python
+import sys
+
 if __name__ == '__main__':
-    print("Hello, World!")
+    name = sys.argv[0]
+    print(f"Hello, {name}!")
 ```
 
 ## C
@@ -21,7 +29,9 @@ if __name__ == '__main__':
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-  printf("Hello, World!");
+  printf("Hello, %s!", argv[1]);
+
+  return 0;
 }
 
 ```

@@ -25,62 +25,139 @@ pre.sourceCode {
 
   }
 
+  /* Tokens from Skylighting.
+   * See: https://github.com/jgm/skylighting/blob/master/skylighting-core/src/Skylighting/Styles.hs 
+   */
 
   /* KeyWordTok */
   .kw {
-    color: #600095;
+    color: rgb(31, 28, 27);
+    font-weight: 700;
   }
 
   /* DataTypeTok */
   .dt {
-    color: #268BD2;
+    color: rgb(0, 87, 174);
   }
 
   /* DecValTok (decimal value), BaseNTok, FloatTok */
   .dv,
   .bn,
   .fl {
-    color: #AE81FF;
+    color: rgb(176, 128, 0);
+  }
+
+  /* ConstantTok */
+  .cn {
+    color: rgb();
   }
 
   /* CharTok */
   .ch {
-    color: #37ad2d;
+    color: rgb(170, 85, 0);
+  }
+
+  /* SpecialCharTok */
+  .sc {
+    color: rgb();
   }
 
   /* StringTok */
   .st {
-    color: #37ad2d;
+    color: rgb(191, 3, 3)
+  }
+
+  /* VerbatimStringTok */
+  .vs {
+    color: rgb();
+  }
+  /* SpecialStringTok */
+
+  .sc {
+    color: rgb();
+  }
+  /* ImportTok */
+  .im {
+    color: rgb();
   }
 
   /* CommentTok */
   .co {
-    color: #7E8E91;
+    color: rgb(137, 136, 135);
+  }
+
+  /* DocumentationTok */
+  .do {
+    color: rgb();
+  }
+  /* AnnotationTok */
+  .an {
+    color: rgb();
+  }
+  /* CommentVarTok */
+  .cv {
+    color: rgb();
   }
 
   /* OtherTok */
   .ot {
-    color: #EB005B;
+    color: rgb(0, 110, 40);
   }
 
+  /* FunctionTok */
+  .fu {
+    color: rgb(100, 74, 155);
+  }
+
+  /* VariableTok */
+  .va {
+    color: rgb();
+  }
+  /* ControlFlowTok */
+  /* OperatorTok */
+  .op {
+    color: rgb();
+  }
+  /* BuiltInTok */
+  .bu {
+    color: rgb(100, 74, 155);
+    font-weight: 700;
+  }
+  /* ExtensionTok */
+  /* PreprocessorTok */
+  .pp {
+    color: rgb();
+  }
+  /* AttributeTok */
+  .at {
+    color: rgb();
+  }
+
+  /* RegionMarkerTok */
+  .re {
+    color: rgb(0, 87, 174jj)
+  }
+
+  /* InformationTok */
+  .in {
+    color: rgb();
+  }
+  /* WarningTok */
+  .wa {
+    color: rgb();
+  }
   /* AlertTok */
   .al {
     color: #A6E22E;
     font-weight: bold;
   }
 
-  /* FunctionTok */
-  .fu {
-    color: #333;
-  }
-
-  /* RegionMarkerTok */
-  .re {}
-
   /* ErrorTok */
   .sourceCode .er {
     color: #E6DB74;
     font-weight: bold;
   }
+
+  /* NormalTok is not marked up */
 
 }
