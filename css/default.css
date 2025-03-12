@@ -59,7 +59,7 @@ nav {
     }
 
     &[target='_blank'] {
-      border-left: 2px solid black;
+      border-left: 0.5rem solid var(--primary-color);
       padding-left: 1rem;
     }
   }
