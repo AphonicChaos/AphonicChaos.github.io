@@ -4,16 +4,14 @@ html {
   font-size: 62.5%;
 }
 
+main {
+  padding: 2.2rem;
+}
+
 body {
   font-size: 1.6rem;
   color: #000;
   background-color: var(--background-color);
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 a {
@@ -41,6 +39,9 @@ a {
 
 nav {
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   a {
     font-size: 1.8rem;
@@ -48,6 +49,7 @@ nav {
     color: var(--secondary-color);
     text-decoration: none;
     text-transform: uppercase;
+    margin: 1rem;
 
     &:hover,
     &.active {
@@ -59,10 +61,6 @@ nav {
       width: 1em;
     }
 
-    &[target='_blank'] {
-      border-left: 0.5rem solid var(--primary-color);
-      padding-left: 1rem;
-    }
   }
 
 }
@@ -98,14 +96,9 @@ article .header {
 
 @media (max-width: 319px) {
   body {
-    width: 90%;
     margin: 0;
-    padding: 0 5%;
   }
 
-  header {
-    margin: 4.2rem 0;
-  }
 
   nav {
     margin: 0 auto 3rem;
@@ -118,7 +111,8 @@ article .header {
 
   .logo {
     text-align: center;
-    margin: 1rem auto 3rem;
+    background-color: var(--primary-color);
+    padding: 2rem;
   }
 
   .logo a {
@@ -133,13 +127,12 @@ article .header {
 
 @media (min-width: 320px) {
   body {
-    width: 90%;
     margin: 0;
-    padding: 0 5%;
   }
 
   header {
-    margin: 4.2rem 0;
+    margin: 0 0 3.2rem 0;
+
   }
 
   nav {
@@ -152,8 +145,9 @@ article .header {
   }
 
   .logo {
+    background-color: var(--primary-color);
     text-align: center;
-    margin: 1rem auto 3rem;
+    padding: 2rem;
   }
 
   .logo a {
@@ -162,7 +156,6 @@ article .header {
 
   nav a {
     display: inline;
-    margin: 0 0.6rem;
   }
 }
 
@@ -176,17 +169,28 @@ article .header {
   header {
     margin: 0 0 3rem;
     padding: 1.2rem 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   nav {
     margin: 0;
     text-align: right;
+    display: block;
+
+    a {
+      margin: 0 0 0 1.2rem;
+      display: inline;
+
+      &[target='_blank'] {
+        border-left: 0.5rem solid var(--primary-color);
+        padding-left: 1rem;
+      }
+    }
   }
 
-  nav a {
-    margin: 0 0 0 1.2rem;
-    display: inline;
-  }
 
   footer {
     text-align: right;
@@ -195,6 +199,7 @@ article .header {
   .logo {
     margin: 0;
     text-align: left;
+    background-color: var(--background-color);
   }
 
   .logo a {
