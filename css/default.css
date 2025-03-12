@@ -55,6 +55,7 @@ nav {
     }
 
     svg {
+      color: var(--primary-color);
       width: 1em;
     }
 
