@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aphonic.org - Polyglot for Life</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="../css/syntax.css" />
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="../"><span>A</span>phonic</a>
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../archive.html">Archive</a>
+      <a href="../resume.html" target="_blank">
+        Resume
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+          <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z"></path>
+          <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z"></path>
+        </svg>
+
+      </a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>Polyglot for Life</h1>
+    <article>
+    <section class="header">
+        Posted on March 13, 2025
+        
+    </section>
+    <section>
+        <p>For as long as I can remember, I’ve been interested in langauges. Not only
+spoken language (I once was a Korean linguest in the military), but also
+programming languages.</p>
+<!--more-->
+<h2 id="at-work">At work</h2>
+<p>As a full-stack engineer, I often took the liberty of seeing a feature completed
+from front to back, especially as I was part of a very small team at my last
+job. On any given day, you would have found my writing any of the following:</p>
+<ul>
+<li>python</li>
+<li>javascript</li>
+<li>typescript</li>
+<li>shell</li>
+<li>sql</li>
+<li>html</li>
+<li>css</li>
+</ul>
+<h2 id="at-home">At Home</h2>
+<p>As I dive into my
+own personal projects, I’ve been able to branch out a bit. As the nature of my
+projects change, so to do some of the languages I find myself working in:</p>
+<ul>
+<li>haskell</li>
+<li>sql</li>
+<li>c</li>
+<li>typescript</li>
+<li>html</li>
+<li>css</li>
+</ul>
+<p>Given that I’ve wanted to document my progress, it was very important to me to
+have a blog that supported syntax highlighting for multiple languages. After
+adding a few styles to the base template, I am pretty happy with the results. I
+added line numbers and some line highlighting myself. The only thing missing is
+a copy-to-clipboard button, which I think I’ll add later as I write more code.</p>
+<p>For now, enjoy several versions of “Hello, World!” that <em>shouldn’t</em> be run in
+production:</p>
+<h3 id="haskell">Haskell</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">System.Environment</span> (getArgs)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Text.Printf</span> (printf)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    (name<span class="op">:</span>_) <span class="ot">&lt;-</span> getArgs</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    printf <span class="st">&quot;Hello, %s\n&quot;</span> name</span></code></pre></div>
+<h3 id="c">C</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Hello, </span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span> argv<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="python">Python</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Hello, </span><span class="sc">{</span>sys<span class="sc">.</span>argv[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">)</span></span></code></pre></div>
+<h3 id="typescript">TypeScript</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`Hello, </span><span class="sc">${</span><span class="bu">process</span><span class="op">.</span><span class="at">argv</span>[<span class="dv">2</span>]<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div>
+    </section>
+</article>
+
+  </main>
+</body>
+
+</html>

@@ -1,6 +1,5 @@
 ---
 title: Polyglot for Life
-draft: true
 ---
 
 For as long as I can remember, I've been interested in langauges. Not only
