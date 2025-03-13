@@ -8,6 +8,8 @@ My plans for this site aren't very grand. They are very intentional, though. You
 see, I wrote this site in [Haskell](https://www.haskell.org/)
 using [Hakyll](https://jaspervdj.be/hakyll/). 
 
+<!--more-->
+
 It wasn't always, though. I spent
 a good few hours with [TypeScript](https://www.typescriptlang.org/) and
 [Gatsby](https://www.gatsbyjs.com/) before ultimately deciding that was too much

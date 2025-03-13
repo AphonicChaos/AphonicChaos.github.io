@@ -3,6 +3,12 @@ title: Polyglot for Life
 draft: true
 ---
 
+For as long as I can remember, I've been interested in langauges. Not only
+spoken language (I once was a Korean linguest in the military), but also
+programming languages. 
+
+<!--more-->
+
 ## At work
 As a full-stack engineer, I often took the liberty of seeing a feature completed
 from front to back, especially as I was part of a very small team at my last

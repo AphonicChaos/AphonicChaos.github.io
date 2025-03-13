@@ -5,6 +5,9 @@ title: Keeping Busy
 I've been trying to keep busy after losing my job last week. Aside from
 submitting about ten applications a day, I've been doing a *lot* of exploring.
 
+<!--more-->
+
+
 # Losing my nerve
 Having been gainfully employed for several years straight, I've realized that
 nearly all of the code that I've written has been proprietary, leaving me unable
