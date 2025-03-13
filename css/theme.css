@@ -3,4 +3,33 @@
   --primary-color-hover: #cc3333bf;
   --secondary-color: #666;
   --background-color: #faf9f6;
+
+  --color-base-100: #faf9f6;
+  --color-base-200: #DBD3BD;
+  --color-base-300: #917E50;
+  --color-base-content: #000;
+  --color-primary: #cc3333;
+  --color-primary-content: #fff;
+  --color-secondary: #3d2645;
+  --color-secondary-content: #fff;
+  --color-accent: #c0caad;
+  --color-accent-content: #000;
+  --color-neutral: #25291c;
+  --color-neutral-content: #fff;
+  --color-info: oklch(68% 0.169 237.323);
+  --color-info-content: oklch(97% 0.013 236.62);
+  --color-success: oklch(72% 0.219 149.579);
+  --color-success-content: oklch(98% 0.018 155.826);
+  --color-warning: oklch(79% 0.184 86.047);
+  --color-warning-content: oklch(98% 0.026 102.212);
+  --color-error: oklch(63% 0.237 25.331);
+  --color-error-content: oklch(97% 0.013 17.38);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }
