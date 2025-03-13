@@ -5,7 +5,6 @@ title: Keeping Busy
 I've been trying to keep busy after losing my job last week. Aside from
 submitting about ten applications a day, I've been doing a *lot* of exploring.
 
-<!--more-->
 
 
 # Losing my nerve
