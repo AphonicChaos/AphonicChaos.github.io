@@ -1,0 +1,59 @@
+cabal-version:      3.14
+name:               aphonic
+version:            0.1.0.0
+synopsis:
+    My personal website written along a cusutom static site generator
+
+-- description:
+homepage:           https://github.com/AphonicChaos/AphonicChaos.github.io
+license:            NONE
+author:             Edwin Marshall
+maintainer:         emarshall85@gmail.com
+-- copyright:
+category:           Web
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+Flag Fast
+  Description:  Enable fast compilation, which is desirable during development.
+  Manual: True
+  Default: False
+
+common warnings
+    ghc-options: -Wall
+
+common threaded
+    ghc-options: -threaded -j41
+
+common performance
+    ghc-options: -O2
+
+common speed 
+    ghc-options: -O0
+
+common build-type
+    if flag(fast)
+        import: speed
+    else
+        import: performance
+
+
+executable aphonic
+    import: warnings, threaded, build-type
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    
+        base ^>=4.21.0.0
+      , stache
+      , text
+      , megaparsec
+      , aeson
+      , optics-core
+    hs-source-dirs:   app
+    default-language: GHC2024
+    default-extensions:
+      BlockArguments
+      DuplicateRecordFields
+      MultilineStrings
