@@ -45,15 +45,14 @@ executable aphonic
     -- other-modules:
     -- other-extensions:
     build-depends:    
-        base ^>=4.21.0.0
-      , stache
+        base ^>=4.20.0.0
       , text
       , megaparsec
       , aeson
-      , optics-core
+      , optics
+      , mustache ^>= 2.4.2
     hs-source-dirs:   app
     default-language: GHC2024
     default-extensions:
       BlockArguments
       DuplicateRecordFields
-      MultilineStrings

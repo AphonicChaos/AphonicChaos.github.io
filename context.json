@@ -1,0 +1,26 @@
+{
+  "title": "Home",
+  "onHome": true,
+  "onPortfolio": false,
+  "onArchive": false,
+  "posts": [
+    {
+      "title": "First Post",
+      "teaser": "I did a thing...",
+      "date": "Mar 4, 2025",
+      "url": "/posts/first.html"
+    },
+    {
+      "title": "Second Post",
+      "teaser": "I did a another thing...",
+      "date": "Mar 7, 2025",
+      "url": "/posts/second.html"
+    },
+    {
+      "title": "Third Post",
+      "teaser": "I quit that thing...",
+      "date": "Mar 9, 2025",
+      "url": "/posts/third.html"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+<ul>
+  {{# posts }}
+  <li>
+    {{ title }} - {{ date }}
+    {{# teaser }}
+    <p>{{ teaser }}</p>
+    {{/ teaser }}
+    <a href="{{ url }}">Read more</a>
+  </li>
+  {{/ posts }}
+</ul>
