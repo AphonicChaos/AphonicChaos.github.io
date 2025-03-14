@@ -42,7 +42,7 @@ common build-type
 executable aphonic
     import: warnings, threaded, build-type
     main-is:          Main.hs
-    -- other-modules:
+    other-modules: Paths_aphonic
     -- other-extensions:
     build-depends:    
         base ^>=4.20.0.0
@@ -50,9 +50,13 @@ executable aphonic
       , megaparsec
       , aeson
       , optics
-      , mustache ^>= 2.4.2
+      , ginger
+      , mtl
+      , pandoc
+      , directory
     hs-source-dirs:   app
     default-language: GHC2024
     default-extensions:
       BlockArguments
       DuplicateRecordFields
+      DeriveAnyClass

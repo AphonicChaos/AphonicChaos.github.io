@@ -1,55 +1,37 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveAnyClass #-}
 module Main where
 
-import Data.Text
--- import Text.Megaparsec
-import Text.Mustache
+-- render ginger (jinja2) templates to HTML
+import Templates
 import Data.Text.IO qualified as T
+import Context as Index (Index(..))
+import Context as Post (Post(..))
 
-data PostContext = PostContext 
-  { postTitle :: Text
-  , teaser :: Text
-  , date :: Text
-  , url :: Text
-  }
-  deriving (Eq, Show)
+index :: Index
+index = Index { title = "Aphonic"
+              , onHome = False
+              , onPortfolio = True
+              , onArchive = False
+              , posts = [ post ]
+              }
 
-instance ToMustache PostContext where
-  toMustache ctx =
-    object [ "title" ~> postTitle ctx 
-           , "teaser" ~> teaser ctx 
-           , "date" ~> date ctx
-           , "url" ~> url ctx
-           ]
+post :: Post
+post = Post { title = "First Post"
+            , teaser = "I did a thing" 
+            , date = "March 4, 2025"
+            , url = "/posts/first.html"
+            }
 
-data PageContext = PageContext
-  { pageTitle :: Text
-  , onHome :: Bool
-  , onPortfolio :: Bool
-  , onArchive :: Bool
-  , posts :: [PostContext]
-  } 
-  deriving (Eq, Show)
 
-instance ToMustache PageContext where
-  toMustache ctx = 
-   object  [ "title" ~> pageTitle ctx
-           , "onHome" ~> onHome ctx
-           , "onPortfolio " ~> onPortfolio ctx
-           , "onArchive" ~> onArchive ctx
-           ]
+-- example of rendering a single template
+example :: IO ()
+example = do
+  result <- renderPage "site/pages/index.html" index
+  either putStrLn T.putStrLn result
 
 main :: IO ()
 main = do
-  let ctx = PageContext { pageTitle = "Aphonic"
-                        , onHome = False
-                        , onPortfolio = True
-                        , onArchive = False
-                        , posts = []
-                        }
-  indexE <- automaticCompile ["site/templates"] "index.mustache"
-  case indexE of 
-    Left err -> print err
-    Right indexT -> do 
-      print indexT
-      T.putStr $ substitute indexT ctx
+  result <- renderPost "site/posts/2025-03-12-site-plans.md" post
+  either putStrLn T.putStrLn result
+

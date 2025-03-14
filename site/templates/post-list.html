@@ -1,0 +1,11 @@
+<ul>
+  {% for post in posts %}
+  <li>
+    {{ post.title }} - {{ post.date }}
+    {% if teaser %}
+    <p>{{ teaser }}</p>
+    {% endif %}
+    <a href="{{ post.url }}">Read more</a>
+  </li>
+  {% endfor %}
+</ul>

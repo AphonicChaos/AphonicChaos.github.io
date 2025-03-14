@@ -1,10 +1,9 @@
-{{<default}}
-{{$body}}
+{% extends 'default.html' %}
+{% block body %}
 <h2>Welcome</h2>
 
 <p>Please bare with me as I whip this blog into shape.</p>
 
 <h2>Posts</h2>
-{{> post-list }}
-{{/body}}
-{{/default}}
+{% include 'post-list.html' %}
+{% endblock %}

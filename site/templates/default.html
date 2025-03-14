@@ -16,18 +16,18 @@
       <a href="/"><span>A</span>phonic</a>
     </div>
     <nav>
-      <a href="/" {{#onHome}} class="active" {{/onHome}}>
+      <a href="/" {% if onHome %} class="active" {% endif %}>
         Home
       </a>
       <a 
           href="/portfolio.html" 
-          {{#onPortfolio}} class="active" {{/onPortfolio}}
+          {% if onPortfolio %} class="active" {% endif %}
       >
         Portfolio
       </a>
       <a 
           href="/archive.html" 
-          {{#onArchive}} class="active" {{/onArchive}}
+          {% if onArchive %} class="active" {% endif %}
       >
         Archive
       </a>
@@ -45,8 +45,8 @@
   </header>
 
   <main role="main">
-    {{$body}}
-    {{/body}}
+    {% block body %}
+    {% endblock %}
   </main>
 
 </body>
