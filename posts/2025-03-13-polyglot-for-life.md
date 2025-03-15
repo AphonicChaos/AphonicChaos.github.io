@@ -62,7 +62,8 @@ main = do
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    printf("Hello, %s\n", argv[1]);
+    char *name = argv[1];
+    printf("Hello, %s\n", name);
 
     return 0;
 }
@@ -73,10 +74,13 @@ int main(int argc, char *argv[]) {
 import sys
 
 if __name__ == '__main__':
-    print(f"Hello, {sys.argv[1]})
+    name = sys.argv[1]
+    print(f"Hello, {name}")
 ```
 
 ### TypeScript
 ```typescript
-console.log(`Hello, ${process.argv[2]}`);
+// compile with tsc main.ts --lib ESNext
+const name: string = process.argv[2]
+console.log(`Hello, ${name}`);
 ```
