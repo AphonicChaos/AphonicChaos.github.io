@@ -1,6 +1,6 @@
 @import "/css/theme.css";
 
-i.fa-brands {
+li.link i {
   color: var(--primary-color);
 }
 
@@ -106,11 +106,16 @@ section>article {
   margin: 0 10px;
 }
 
-.title {
+.title, .degree {
   flex-basis: 100%;
   margin: 0 10px;
   color: var(--primary-color);
 }
+
+.degree {
+  color: var(--secondary-color);
+}
+
 
 .duration {
   margin: 0 -10px 10px 0;

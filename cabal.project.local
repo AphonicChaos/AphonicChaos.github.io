@@ -1,0 +1,2 @@
+packages: .
+allow-newer: hakyll-typescript:bytestring,hakyll-process,hakyll

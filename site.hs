@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Hakyll.Typescript.JS
 
 
 --------------------------------------------------------------------------------
@@ -15,10 +16,13 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
+    match "js/*" $ do
+        route   idRoute
+        compile compressJsCompiler
+
     matchMetadata "posts/*" (not . isDraft) $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
@@ -27,7 +31,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx = listField "posts" (teaserField "teaser" "content" <> postCtx) (return posts)
+            let indexCtx = listField "posts" postCtx (return posts)
                         <> constField "is-home" ""
                         <> defaultContext
 
@@ -55,7 +59,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx = listField "posts" (teaserField "teaser" "content" <> postCtx) (return posts) 
+            let archiveCtx = listField "posts" postCtx (return posts) 
                           <> constField "title" "Archive"             
                           <> constField "is-archive" ""
                           <> defaultContext
