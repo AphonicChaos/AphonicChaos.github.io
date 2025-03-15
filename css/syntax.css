@@ -177,7 +177,7 @@ code.sourceCode {
 }
 
 div.sourceCode {
-  counter-reset: line calc(attr(data-countfrom type(<number>), 1) - 1);
+  counter-reset: line;
   margin: 1em 0;
   color: #1f1c1b;
   background-color: #ffffff;

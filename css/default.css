@@ -146,6 +146,19 @@ hr {
   }
 }
 
+.posts {
+  padding: 0;
+
+  li {
+    list-style: none;
+    border-left: 0.25rem solid var(--color-primary);
+    margin: 2rem 0;
+    padding-left: 2rem;
+
+
+  }
+}
+
 @media (min-width: 320px) {
   body {
     margin: 0;

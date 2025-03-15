@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
 ### TypeScript
 ```typescript
-// compile with tsc main.ts --lib ESNext
+// compile with --lib ESNext
 const name: string = process.argv[2]
 console.log(`Hello, ${name}`);
 ```

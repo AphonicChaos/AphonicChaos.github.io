@@ -2,7 +2,7 @@
 title: A Plan in Sight
 ---
 
-## Or rather: Site plans. 
+#### Or rather: Site plans. 
 
 My plans for this site aren't very grand. They are very intentional, though. You
 see, I wrote this site in [Haskell](https://www.haskell.org/)

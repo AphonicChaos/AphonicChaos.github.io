@@ -1,0 +1,1 @@
+(function(){"use strict";document.querySelectorAll("div.sourceCode").forEach(sourceCode=>{const startFrom=sourceCode.dataset.startfrom;if(startFrom)sourceCode.style.counterReset=`line calc(${startFrom} - 1)`})}())
