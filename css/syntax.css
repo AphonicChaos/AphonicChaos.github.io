@@ -187,6 +187,13 @@ pre.sourceCode {
   margin: 0;
 }
 
+pre.sourceCode.not-numbered {
+  code span:before {
+    content: "";
+    margin: 1rem 0; 
+  }
+}
+
 pre.numberSource {
   margin-left: 3em;
   border-left: 1px solid #a0a0a0;

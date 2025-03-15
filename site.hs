@@ -61,7 +61,7 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx = listField "posts" (teaserField "teaser" "content" <> postCtx) (return posts) 
-                          <> constField "title" "Archive"             
+                          <> constField "title" "All Posts"             
                           <> constField "is-archive" ""
                           <> defaultContext
 

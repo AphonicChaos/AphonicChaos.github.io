@@ -2,8 +2,8 @@
 title: Polyglot for Life
 ---
 
-For as long as I can remember, I've been interested in langauges. Not only
-spoken language (I once was a Korean linguest in the military), but also
+For as long as I can remember, I've been interested in languages. Not only
+spoken language (I once was a Korean linguist in the military), but also
 programming languages. 
 
 <!--more-->
@@ -14,24 +14,24 @@ from front to back, especially as I was part of a very small team at my last
 job. On any given day, you would have found my writing any of the following:
 
 - python
-- javascript
-- typescript
+- JavaScript
+- Typescript
 - shell
-- sql
-- html
-- css
+- SQL
+- HTML
+- CSS
 
 ## At Home
 As I dive into my
 own personal projects, I've been able to branch out a bit.  As the nature of my
 projects change, so to do some of the languages I find myself working in:
 
-- haskell
-- sql
-- c
-- typescript 
-- html
-- css
+- Haskell
+- SQL
+- C
+- Typescript 
+- HTML
+- CSS
 
 Given that I've wanted to document my progress, it was very important to me to
 have a blog that supported syntax highlighting for multiple languages. After
@@ -41,7 +41,6 @@ a copy-to-clipboard button, which I think I'll add later as I write more code.
 
 For now, enjoy several versions of "Hello, World!" that *shouldn't* be run in
 production:
-
 
 ### Haskell
 ```haskell

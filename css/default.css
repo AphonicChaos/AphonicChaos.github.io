@@ -112,14 +112,17 @@ blockquote {
 }
 
 hr {
-  border: 0.25rem solid var(--primary-color);
+  background: linear-gradient(to right, var(--color-primary), var(--background-color));
+  height: 0.5rem;
+  border: 0;
+  width: 80%;
+  margin-left: 0;
 }
 
 @media (max-width: 319px) {
   body {
     margin: 0;
   }
-
 
   nav {
     margin: 0 auto 3rem;

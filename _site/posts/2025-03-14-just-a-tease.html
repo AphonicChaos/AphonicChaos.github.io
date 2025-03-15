@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aphonic.org - Just a Tease</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="../css/syntax.css" />
+  <script src="../js/syntax.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="../"><span>A</span>phonic</a>
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../archive.html">Archive</a>
+      <a href="../resume.html" target="_blank">
+        Resume
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+          <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z"></path>
+          <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z"></path>
+        </svg>
+
+      </a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>Just a Tease</h1>
+    <article>
+    <section class="header">
+        Posted on March 14, 2025
+        
+    </section>
+    <section>
+        <p>I just wanted to add teasers to the <a href="../">home page</a>. After many attempts, and
+many failures, I resolved to look for another static site generator; one that
+felt less magical; one that I could wrap my head around.</p>
+<!--more-->
+<p>The <a href="https://jaspervdj.be/hakyll/tutorials/using-teasers-in-hakyll.html">Hakyll tutorial</a> covers adding the feature beautifully. Chris Reichert even goes into some more elaborate detail in <a href="http://reichertbrothers.com/blog/posts/2014-04-08-hakyll-teasers.html">this blog post</a>. Despite that, I still couldn’t get the feature to work, and so set off looking for another static site generator.</p>
+<h2 id="in-search-of-greener-pastures">In search of greener pastures</h2>
+<p>Before this version of the site, I had played with
+<a href="https://www.gatsbyjs.com/">Gatsby</a>, and years before, I had experimented with
+<a href="https://gohugo.io/">Hugo</a>, <a href="https://jekyllrb.com/">jekyll</a>, and countless
+others. While each one worked, more or less, I didn’t <em>enjoy</em> using them.</p>
+<p>I next tried <a href="https://github.com/ChrisPenner/slick#readme">slick</a>, and also
+looked into both <a href="https://rib.srid.ca/">rib</a> and <a href="https://ema.srid.ca/">Ema</a>.
+For one reason or another, I didn’t like these either, and so set about writing
+my own static site generator yesterday…</p>
+<h2 id="cache-me-slipping">Cache me slipping</h2>
+<p>…and then realized why the feature wasn’t working this morning. You see,
+there are two types are changes you can make to a Hakyll site:</p>
+<ul>
+<li>Changes to how the site is <em>built</em></li>
+<li>changes to <em>content</em>.</li>
+</ul>
+<p>Changes to how the site are built necessitate recompiling the program, while
+changes to content do not. While I was dutifully recompiling when I needed to, I
+wasn’t using the new executable. That is, my work flow had consisted of doing
+this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash not-numbered"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> site.hs <span class="kw">|</span> <span class="ex">entr</span> <span class="at">-cr</span> sh <span class="at">-c</span> <span class="st">&quot;cabal build &amp;&amp; site watch&quot;</span></span></code></pre></div>
+<p>This command watches the <code>site.hs</code> file for changes, and recompiles the program
+when necessary, then restarts the executable in watch mode, which gives me
+access to a preview server that watches for changes in <em>content</em>. The problem is
+that the <code>cabal build</code> command generates an executable, but <strong>does not</strong> place
+it in my path, so the <code>site</code> executable I was running was from an <strong>old</strong>
+version.</p>
+<p>The solution is to either use <code>cabal install</code> instead of <code>cabal build</code> <em>or</em> use
+<code>cabal run site -- watch</code> instead of <code>site watch</code>. I chose to delete the
+executable from my <code>PATH</code> and use the latter.</p>
+<p>Despite having a solution, I think I’m going to keep working on my own static
+site generator.</p>
+<hr />
+<h2 id="room-for-improvement-if-ux-me">Room for improvement, if UX me</h2>
+<p>Despite having a solution to the problem of showing teasers, I still think it’s
+worth continuing work on my own static site generator. In addition to the fact
+that building something new is just fun, I think I can more easily add features
+I’m missing if I’m closer to metal. I also want to improve the UX of Hakyll,
+especially with regards to having extra subcommands for things like generating
+scaffolds for new posts and pages, allowing the browser to refresh on change
+instead of having to hard-refresh the page to see changes, and using a more
+capable templating language.</p>
+<p>The other benefit of making my own program, is that it’ll be yet another thing i
+can add to my portfolio. While I can currently point to the bit of styling work
+I did on this current iteration, in addition to my ability to (hopefully)
+communicate effectively, it’ll be nice to be able to talk about the project more
+holistically. Here are just <em>some</em> of the things I’ll be able to speak to, which
+I can’t currently:</p>
+<ul>
+<li>writing custom build systems</li>
+<li>the benefits of inheritance in a templating language</li>
+<li>writing command line interfaces that are a joy to use</li>
+<li>the importance of a tight feedback loop when working</li>
+</ul>
+    </section>
+</article>
+
+  </main>
+</body>
+
+</html>
