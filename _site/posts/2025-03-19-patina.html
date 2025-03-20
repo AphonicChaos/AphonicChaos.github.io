@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aphonic.org - Patina</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="../css/syntax.css" />
+  <script src="../js/syntax.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="../"><span>A</span>phonic</a>
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../archive.html">Archive</a>
+      <a href="../resume.html" target="_blank">
+        Resume
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+          <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z"></path>
+          <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z"></path>
+        </svg>
+
+      </a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>Patina</h1>
+    <article>
+    <section class="header">
+        Posted on March 19, 2025
+        
+    </section>
+    <section>
+        <p>I got the idea for a game a few days ago. I started prototyping it using the DOM
+and absolutely positioned elements before I realized I was better off using
+proper tools for the job. As such, I decided to dust off a book I bought a
+couple of years ago and write my own 2D game engine, which I’m calling “Patina”.</p>
+<!--more-->
+<p>A while back, I taught full stack web development at a successful startup. In
+order to keep students engaged, we taught DOM manipulation by having them
+implement various video games, including all of the following:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Rock_paper_scissors">Rock, Paper, Scissors</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)">Minesweeper</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tetris">Tetris</a></li>
+</ul>
+<p>While the first two are a good fit for using the DOM for graphics, the latter
+two would arguably have been better off implemented using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas
+API</a>. Since game
+development was technically outside of the scope of the course – that is, it
+was a means to an end – we stuck with DOM manipulation.</p>
+<p>For my game idea (the details of which, I’ll write about another time), I
+figured I could take the same short cut to implement it. Indeed, I could have,
+but I quickly remembered all the pain points of absolute positioning of elements
+and trying to animate those using CSS. Prototype or not, I didn’t <em>enjoy</em>
+writing the game because of these pain points. As such, I decided to take a step
+back and use a proper graphics framework.</p>
+<h2 id="all-of-the-rabbit-holes">All of the rabbit holes</h2>
+<p>For a while, I considered writing the game in a language that compiled to
+WebAssembly, such as in C using <a href="https://www.raylib.com/">RayLib</a> or in Rust using <a href="https://bevyengine.org/">Bevy</a>. Either seemed interesting enough, but I really wanted to be able to write games in a functional way.</p>
+<p>I thought back to some of my early game development experiments years ago. A lot
+of the frameworks I was looking into followed the same general pattern that
+<a href="https://react.dev/">React</a> eventually adopted: Model-View-Update.</p>
+<p>The basic idea is that your
+<code>model</code> represents the state of the game at any given time, an <code>update</code> function
+takes as input a <code>model</code> representing the previous frame of your game, as well
+as an <code>action</code> and returns a new <code>model</code> using the old one. Finally, a <code>view</code>
+function renders the state of your game.</p>
+<p>Sound familiar? You’ve seen this before if you ever played with <a href="https://redux.js.org/">redux</a>.</p>
+<p>You can see a working example of this idea in <a href="https://elm-lang.org/">Elm’s</a> <a href="https://elm-lang.org/examples/mario">Mario
+Demo</a>;</p>
+<p>Suffice it to say, I never found anything that quite ticked all of the boxes for
+me (Elm as a language is inadequate for other reasons). Then I took a look at my
+bookshelf and realized that I could eventually, hopefully, make something
+myself.</p>
+<h2 id="to-shave-a-yak">To shave a yak</h2>
+<p>The book in question is <a href="https://link.springer.com/book/10.1007/978-1-4842-7377-7">“Build Your Own 2D Game Engine and Create Great Web Games”</a>.</p>
+<p>It steps through the process of making your own 2D game engine using the
+aforementioned canvas API and <a href="https://get.webgl.org/">WebGL</a>. My (possibly
+naive) plan, was thus:</p>
+<ol type="1">
+<li>Learn to write a low-level 2D game engine that runs games on the web</li>
+<li>Make a few simple games in the process, not unlike I had my students do with
+the DOM API</li>
+<li>Implement a more declarative, functional layer on top of that.</li>
+<li>(Finally) implement my game!</li>
+</ol>
+<p>After a couple of chapters, I now know a little bit about vertex and fragment
+shaders, as well as how to set up a context to draw on. Several lines of
+TypeScript later, and I’m able to draw a colored rectangle on a colored canvas:</p>
+<figure>
+<img src="../images/screenshots/patina-chapter-2.png" title="Patina after chapter 2 of the book" alt="Patina after chapter 2 of the book" />
+<figcaption aria-hidden="true">Patina after chapter 2 of the book</figcaption>
+</figure>
+<p>If you’d like to take a look at the code I’ve written up until this point, feel
+free to check out the <a href="https://github.com/AphonicChaos/patina-game-engine/tree/main">git repository</a>.</p>
+    </section>
+</article>
+
+  </main>
+</body>
+
+</html>
