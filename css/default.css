@@ -119,10 +119,9 @@ hr {
   margin-left: 0;
 }
 
-
 img {
   display: block;
-  max-width: 540px;
+  max-width: 260px;
   height: auto;
   margin: 3rem auto;
   border: 0.25rem solid var(--color-accent);
@@ -181,6 +180,7 @@ figcaption {
     margin: 0;
   }
 
+
   header {
     margin: 0 0 3.2rem 0;
   }
@@ -212,6 +212,10 @@ figcaption {
 @media (min-width: 640px) {
   main {
     padding: 0 2.2rem 2.2rem;
+  }
+
+  img {
+    max-width: 540px;
   }
 
   body {
