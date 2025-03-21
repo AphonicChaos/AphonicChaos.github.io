@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aphonic.org - Bookworm</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="../css/syntax.css" />
+  <script src="../js/syntax.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="../"><span>A</span>phonic</a>
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../archive.html">Archive</a>
+      <a href="../resume.html" target="_blank">
+        Resume
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+          <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z"></path>
+          <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z"></path>
+        </svg>
+
+      </a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>Bookworm</h1>
+    <article>
+    <section class="header">
+        Posted on March 20, 2025
+        
+    </section>
+    <section>
+        <p>The first game that I’d like to create with the game engine that I [wrote about
+yesterday][/posts/2025-03-19-patina] is a game I’m calling “Bookworm”. The plan
+is for it to be <a href="https://en.wikipedia.org/wiki/Snake_(video_game_genre)">Snake</a>,
+but with a twist</p>
+<!--more-->
+<p>Specifically, the core mechanic is that instead of a snake eating apples, the
+player is a worm eating letters to create words. I took a moment last night to
+sketch out what the game might look like:</p>
+<figure>
+<img src="../images/screenshots/bookworm-design.jpeg" title="Bookworm design notes" alt="Bookworm design notes" />
+<figcaption aria-hidden="true">Bookworm design notes</figcaption>
+</figure>
+<h2 id="in-summary">In Summary</h2>
+<p>The player starts out like in any snake clone, with a head and no tail. Instead
+of seeing apples, the player sees letters they can eat. As they eat those
+letters, a few things can happen:</p>
+<ul>
+<li>If the letter contributes to part of an existing word in the English
+dictionary, the player’s tail increases in size, and they will see the partial
+word dangle behind them as the move around the map.</li>
+<li>If the letter eaten <em>completes</em> a known word, the player scores points, loses
+their tail and has to find a new word. The size of their head also increases
+depending on the length of the word they found.</li>
+<li>If the letter eaten would prevent the player from spelling a known word, they
+not only lose their tail, but their head shrinks by a size of one.</li>
+<li>If ever the player would shrink to a head size less than one, they lose the
+game and their score is recorded.</li>
+</ul>
+<h2 id="questionable-details">Questionable Details</h2>
+<p>Hopefully, the above all makes sense, but there are a few details one might be
+curious about.</p>
+<dl>
+<dt>
+How big is the game board?
+</dt>
+<dd>
+In my research, I’ve seen claims of boards for snake games being as small
+as 10x10 and as large as 40x40. For the initial version, I’m going to
+experiment with the smaller board size and increase it later. I may even
+make it configurable by the player!
+</dd>
+<dt>
+What dictionary will you use?
+</dt>
+<dd>
+For prototyping, I’ll just use the word file that comes with most *nix
+based systems which is located at <code>/usr/share/dict/words</code>. Eventually
+though, I’ll want something more curated and sophisticated. For instance,
+I’d like to eliminate offensive words, and perhaps work with a more
+feature-rich dictionary which includes parts-of-speech and definitions,
+which I can use to design more game modes.
+</dd>
+</dl>
+<h2 id="in-excess">In Excess</h2>
+<p>I also thought of a few ideas for different modes of play.</p>
+<h3 id="stem-ulation">Stem-ulation</h3>
+<p>The score is based on how many consecutive words you can create with the same
+word stem. Perhaps the head you retain is based on that stem. For example, If
+you spell “cat” first, followed by “catholic”, your head might then become 3
+units long, spelling “cat”.</p>
+<h3 id="worml">Worml</h3>
+<p>You only score 5-letter words.</p>
+<h3 id="part-y-of-speech">Part-y of Speech</h3>
+<p>You are prompted with a part of speech (e.g., noun, adjective, verb, etc.) and
+must spell a word that can be used as that part of speech.</p>
+    </section>
+</article>
+
+  </main>
+</body>
+
+</html>

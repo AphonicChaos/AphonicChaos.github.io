@@ -12,8 +12,8 @@ main :: IO ()
 main = hakyll $ do
   match "images/**" $ do
     route idRoute
-    -- compile copyFileCompiler
-    compile $ loadImage >>= ensureFitCompiler 540 340
+    compile copyFileCompiler
+  -- compile $ loadImage >>= ensureFitCompiler 540 340
 
   match "css/*" $ do
     route idRoute

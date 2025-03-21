@@ -122,9 +122,10 @@ hr {
 
 img {
   display: block;
-  margin: 0 auto;
-  border: 0.25rem solid var(--color-accent);
+  max-width: 540px;
   height: auto;
+  margin: 3rem auto;
+  border: 0.25rem solid var(--color-accent);
   border-radius: 0.5rem;
 }
 
