@@ -3,14 +3,14 @@
 This is the source code for my website, [aphonic.org](https://aphonic.org).
 
 ## Project layout
-.
-├── aphonic-org.cabal
-├── app
-│   └── Main.hs
-├── CHANGELOG.md
-└── site
-    └── templates
-    └── posts
+    .
+    ├── aphonic-org.cabal
+    ├── app
+    │   └── Main.hs
+    ├── CHANGELOG.md
+    └── site
+        └── templates
+        └── posts
 
 ### app
 This directory holds the source code for the static site generator used to build
