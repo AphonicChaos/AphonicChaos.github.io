@@ -10,6 +10,7 @@ main {
 
 header {
   background-color: var(--background-color);
+  z-index: 999;
 }
 
 body {
