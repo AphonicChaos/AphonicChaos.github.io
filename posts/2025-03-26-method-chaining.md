@@ -13,7 +13,7 @@ decided to improve the UX of the `Renderable` class of my game engine yesterday.
 As of yesterday, you could change the translation, rotation, and scale of an
 object in a sequential manner:
 
-```typescript
+```typescript {.not-numbered}
 const blueSquare = new Renderalbe()
 blueSquare.position = [20, 60];
 blueSquare.rotationRad = 0.2;
@@ -64,11 +64,20 @@ I added a chainable method for resizing:
 I did something similar for rotation and scale, adding `rotateRad` and `move`.
 With this, the earlier example becomes:
 
-```typescript
-const blueSquare = new Renderalbe().move(20, 60).rotateRad(0.2).resize(5, 5);
+```typescript {.not-numbered}
+const blueSquare = new Renderalbe()
+blueSquare.move(20, 60).rotateRad(0.2).resize(5, 5);
 ```
 
 As an added bonus, this change also addresses the issue I had yesterday when I
 was discussing the lack of tuples in TypeScript. That is, with this interface, a
 user can't accidentally pass in too many values for the array that the values
 are stored in.
+
+```diff {.not-numbered}
+const blueSquare = new Renderalbe()
+-blueSquare.position = [20, 60];
+-blueSquare.rotationRad = 0.2;
+-blueSquare.scale = [5, 5];
++blueSquare.move(20, 60).rotateRad(0.2).resize(5, 5);
+```

@@ -39,20 +39,20 @@
         
     </section>
     <section>
-        <p>I got most of the way through chapter 3 today, in which I implemented a camera
+        <p>I finished chapter 3 today, in which I implemented a camera
 for my game engine, so that <code>Renderable</code> objects can be positioned conveniently
 using a coordinate system that makes more intuitive system for the game being
 built, rather than the native to
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection">WebGL</a>.</p>
 <!--more-->
-<h3 id="intuitive-coordinates">Intuitive Coordinates</h3>
+<h2 id="intuitive-coordinates">Intuitive Coordinates</h2>
 <p>That is, instead of having to position items using floating point numbers that
 are ±1, I can specify integer coordinates that represent arbitrary units in the
 game world. For example, a standard football field is 360 feet long and 160 ft
 wide. I could conveniently place the origin of the field at <code>[0, 0]</code> and say
 that anything from -180 to -1 represents one team’s side of the field, and
 anything from 1 to 180 represents the other’s.</p>
-<h3 id="properties">Properties</h3>
+<h2 id="properties">Properties</h2>
 <p>One other thing I did this chapter that deviates from the book is to use
 properties rather than getter/setter methods. That is, rather than implementing
 something like this:</p>
@@ -113,7 +113,7 @@ checks, etc, I might instead write:</p>
 <p>Which is of course then used like this:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderable <span class="op">=</span> <span class="kw">new</span> <span class="fu">Renderable</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(renderable<span class="op">.</span><span class="at">position</span>)<span class="op">;</span> <span class="co">// =&gt; [1, 3]</span></span></code></pre></div>
-<h3 id="tuples">Tuples</h3>
+<h2 id="tuples">Tuples</h2>
 <p>As an aside, I found myself sorely missing tuples from languages like <a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences">Python</a>
 and <a href="https://en.wikibooks.org/wiki/Haskell/Lists_and_tuples#Tuples">Haskell</a>.
 That is, one problem with the above <code>Renderable</code> snippet is that position has
@@ -170,6 +170,12 @@ and <code>y</code> defined similar to the following:</p>
 continue to shuttle around simple arrays:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>renderable<span class="op">.</span><span class="at">x</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>renderable<span class="op">.</span><span class="at">y</span> <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span></code></pre></div>
+<hr />
+<p>If you’d like to see the resulting code after this chapter, check out the <a href="https://github.com/AphonicChaos/patina-game-engine/tree/ch3">ch3
+tag on GitHub</a>. If
+you’d like to see the changes since the last chapter, you can <a href="https://github.com/AphonicChaos/patina-game-engine/compare/ch2...ch3">check that out on
+GitHub as
+well</a>.</p>
     </section>
 </article>
 

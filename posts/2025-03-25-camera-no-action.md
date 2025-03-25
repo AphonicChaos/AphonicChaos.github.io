@@ -2,7 +2,7 @@
 title: Camera, No Lights or Action
 ---
 
-I got most of the way through chapter 3 today, in which I implemented a camera
+I finished chapter 3 today, in which I implemented a camera
 for my game engine, so that `Renderable` objects can be positioned conveniently
 using a coordinate system that makes more intuitive system for the game being
 built, rather than the native to
@@ -10,7 +10,7 @@ built, rather than the native to
 
 <!--more-->
 
-### Intuitive Coordinates
+## Intuitive Coordinates
 
 That is, instead of having to position items using floating point numbers that
 are ±1, I can specify integer coordinates that represent arbitrary units in the
@@ -19,7 +19,7 @@ wide. I could conveniently place the origin of the field at `[0, 0]` and say
 that anything from -180 to -1 represents one team's side of the field, and
 anything from 1 to 180 represents the other's.
 
-### Properties
+## Properties
 One other thing I did this chapter that deviates from the book is to use
 properties rather than getter/setter methods. That is, rather than implementing
 something like this:
@@ -103,7 +103,7 @@ const renderable = new Renderable(1, 3);
 console.log(renderable.position); // => [1, 3]
 ```
 
-### Tuples
+## Tuples
 As an aside, I found myself sorely missing tuples from languages like [Python](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences)
 and [Haskell](https://en.wikibooks.org/wiki/Haskell/Lists_and_tuples#Tuples).
 That is, one problem with the above `Renderable` snippet is that position has
@@ -177,3 +177,10 @@ continue to shuttle around simple arrays:
 renderable.x = 1;
 renderable.y = 3;
 ```
+
+---
+If you'd like to see the resulting code after this chapter, check out the [ch3
+tag on GitHub](https://github.com/AphonicChaos/patina-game-engine/tree/ch3). If
+you'd like to see the changes since the last chapter, you can [check that out on
+GitHub as
+well](https://github.com/AphonicChaos/patina-game-engine/compare/ch2...ch3).
