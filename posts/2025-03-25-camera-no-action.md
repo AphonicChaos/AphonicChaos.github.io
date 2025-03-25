@@ -1,6 +1,5 @@
 ---
 title: Camera, No Lights or Action
-draft: true
 ---
 
 I got most of the way through chapter 3 today, in which I implemented a camera

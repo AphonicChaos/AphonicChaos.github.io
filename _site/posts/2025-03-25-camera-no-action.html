@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aphonic.org - Camera, No Lights or Action</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="../css/syntax.css" />
+  <script src="../js/syntax.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="../"><span>A</span>phonic</a>
+    </div>
+    <nav>
+      <a href="../">Home</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../archive.html">Archive</a>
+      <a href="../resume.html" target="_blank">
+        Resume
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+          <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z"></path>
+          <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z"></path>
+        </svg>
+
+      </a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>Camera, No Lights or Action</h1>
+    <article>
+    <section class="header">
+        Posted on March 25, 2025
+        
+    </section>
+    <section>
+        <p>I got most of the way through chapter 3 today, in which I implemented a camera
+for my game engine, so that <code>Renderable</code> objects can be positioned conveniently
+using a coordinate system that makes more intuitive system for the game being
+built, rather than the native to
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_model_view_projection">WebGL</a>.</p>
+<!--more-->
+<h3 id="intuitive-coordinates">Intuitive Coordinates</h3>
+<p>That is, instead of having to position items using floating point numbers that
+are ±1, I can specify integer coordinates that represent arbitrary units in the
+game world. For example, a standard football field is 360 feet long and 160 ft
+wide. I could conveniently place the origin of the field at <code>[0, 0]</code> and say
+that anything from -180 to -1 represents one team’s side of the field, and
+anything from 1 to 180 represents the other’s.</p>
+<h3 id="properties">Properties</h3>
+<p>One other thing I did this chapter that deviates from the book is to use
+properties rather than getter/setter methods. That is, rather than implementing
+something like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Renderable {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  _position<span class="op">:</span> <span class="dt">number</span>[]<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">constructor</span>() {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">_position</span> <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">getPosition</span>()<span class="op">:</span> <span class="dt">number</span>[] {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">_position</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setPosition</span>([x<span class="op">,</span> y]) {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">_position</span> <span class="op">=</span> [x<span class="op">,</span> y]<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Which is then used like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderable <span class="op">=</span> <span class="kw">new</span> <span class="fu">Renderable</span>()<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>renderable<span class="op">.</span><span class="fu">setPosition</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>])<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(renderable<span class="op">.</span><span class="fu">getPosition</span>())<span class="op">;</span> <span class="co">// =&gt; [1, 3]</span></span></code></pre></div>
+<p>I did the following instead:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Renderable {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> _position<span class="op">:</span> <span class="dt">number</span>[]<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">constructor</span>() {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">_position</span> <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">get</span> <span class="fu">position</span>()<span class="op">:</span> <span class="dt">number</span>[] {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">_position</span><span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">set</span> <span class="fu">position</span>([x<span class="op">,</span> y]<span class="op">:</span> <span class="dt">number</span>[]) {</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">_position</span> <span class="op">=</span> [x<span class="op">,</span> y]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Which is instead used like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderable <span class="op">=</span> <span class="kw">new</span> <span class="fu">Renderable</span>()<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>renderable<span class="op">.</span><span class="at">position</span> <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(renderable<span class="op">.</span><span class="at">position</span>)<span class="op">;</span> <span class="co">// =&gt; [1, 3]</span></span></code></pre></div>
+<p>Of course, this particular example is contrived:</p>
+<ul>
+<li>The fact that I immediately set the position after instantiation suggests that
+position would make a good constructor argument.</li>
+<li>I’m not doing any extra computation when setting or getting.</li>
+</ul>
+<p>With such a trivial example where I don’t need to do extra work or bounds
+checks, etc, I might instead write:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Renderable {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> position<span class="op">:</span> <span class="dt">number</span>[]<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">constructor</span>(x<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> y<span class="op">:</span> <span class="dt">number</span>) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">position</span> <span class="op">=</span> [x<span class="op">,</span> y]<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Which is of course then used like this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderable <span class="op">=</span> <span class="kw">new</span> <span class="fu">Renderable</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(renderable<span class="op">.</span><span class="at">position</span>)<span class="op">;</span> <span class="co">// =&gt; [1, 3]</span></span></code></pre></div>
+<h3 id="tuples">Tuples</h3>
+<p>As an aside, I found myself sorely missing tuples from languages like <a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences">Python</a>
+and <a href="https://en.wikibooks.org/wiki/Haskell/Lists_and_tuples#Tuples">Haskell</a>.
+That is, one problem with the above <code>Renderable</code> snippet is that position has
+exactly two elements, but nothing about the type (<code>number[]</code>) suggests that.
+There are a couple of ways around that, such as making position an object:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="bu">Position</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  x<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  y<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Renderable {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  position<span class="op">:</span> <span class="bu">Position</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">constructor</span>(position<span class="op">:</span> <span class="bu">Position</span>) {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">position</span> <span class="op">=</span> position<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> renderable <span class="op">=</span> <span class="kw">new</span> <span class="bu">Position</span>({ x<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> y<span class="op">:</span> <span class="dv">3</span> })<span class="op">;</span></span></code></pre></div>
+<p>But that’s more verbose. I had to create a type alias (or add an inline type
+annotation), and then construct an object at instantiation type. On the other
+hand, it’s more type-safe than the array version, and I can more clearly access
+the individual properties of the position without error:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(rednerable<span class="op">.</span><span class="at">position</span><span class="op">.</span><span class="at">x</span>) <span class="co">// =&gt; 1</span></span></code></pre></div>
+<p>The other problem, though, is that <code>WebGL2</code> and <code>glMatrix</code> do a lot of
+operations on arrays, and so I’d need to unpack those objects before using them
+in either of the two APIs. Considering that, I’ve decided to stick to the array
+syntax with helper properties for individual elements. For example, I have <code>x</code>
+and <code>y</code> defined similar to the following:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="fu">Renderable</span>() {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> _position<span class="op">:</span> <span class="dt">number</span>[]<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">constructor</span>() {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">_position</span> <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">get</span> <span class="fu">x</span>()<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">_position</span>[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">set</span> <span class="fu">x</span>(value<span class="op">:</span> <span class="dt">number</span>) {</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="kw">this</span><span class="op">.</span><span class="at">_position</span>[<span class="dv">0</span>] <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">get</span> <span class="fu">y</span>()<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">_position</span>[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">set</span> <span class="fu">y</span>(value<span class="op">:</span> <span class="dt">number</span>) {</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>      <span class="kw">this</span><span class="op">.</span><span class="at">_position</span>[<span class="dv">1</span>] <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Client code now has the convenience of the object syntax, but internal code can
+continue to shuttle around simple arrays:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>renderable<span class="op">.</span><span class="at">x</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>renderable<span class="op">.</span><span class="at">y</span> <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span></code></pre></div>
+    </section>
+</article>
+
+  </main>
+</body>
+
+</html>
