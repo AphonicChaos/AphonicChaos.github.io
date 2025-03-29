@@ -21,7 +21,8 @@ main = hakyll $ do
 
   match "js/*" $ do
     route idRoute
-    compile compressJsCompiler
+    compile copyFileCompiler
+  -- compile compressJsCompiler
 
   matchMetadata "posts/*" (not . isDraft) $ do
     route $ setExtension "html"

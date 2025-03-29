@@ -1,4 +1,16 @@
 @import "/css/theme.css";
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+/* Specify in CSS */
+* {
+  font-family: 'Fira Code', monospace;
+}
+
+@supports (font-variation-settings: normal) {
+  * {
+    font-family: 'Fira Code VF', monospace;
+  }
+}
 
 li.link i {
   color: var(--primary-color);
@@ -46,6 +58,10 @@ header>p {
   margin-top: 0;
 }
 
+header h2 {
+  margin: 0;
+}
+
 .red {
   color: var(--primary-color);
 }
@@ -76,18 +92,13 @@ section>h2 {
 }
 
 section>p {
-  margin-left: 100px;
+  margin-left: 2rem;
 }
 
 .skills {
-  margin-left: 100px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.skill {
-  margin: 0 40px 0 0;
-
+  display: grid;
+  margin-left: 2rem;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .skill>h4 {
@@ -96,7 +107,7 @@ section>p {
 }
 
 section>article {
-  margin: 10px 10px 10px 100px;
+  margin: 1rem 0.75rem 0.25rem 1rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -106,7 +117,8 @@ section>article {
   margin: 0 10px;
 }
 
-.title, .degree {
+.title,
+.degree {
   flex-basis: 100%;
   margin: 0 10px;
   color: var(--primary-color);
@@ -125,9 +137,14 @@ article>div {
   margin: 10px;
 }
 
+article p {
+  margin: 0.75rem;
+}
+
 ul {
   flex-basis: 100%;
   margin: 10px 0 0 0;
+  padding: 0 1rem;
 }
 
 @media print {
