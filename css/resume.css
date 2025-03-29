@@ -40,7 +40,7 @@ body {
 }
 
 main {
-  margin: 0 auto;
+  margin: auto;
   height: 100%;
   border-top: 20px solid var(--secondary-color);
 }
@@ -50,8 +50,8 @@ header {
 }
 
 header>h1 {
-  margin: 0;
-  font-size: 48pt;
+  margin: 1rem 0;
+  font-size: 22pt;
 }
 
 header>p {
@@ -66,11 +66,6 @@ header h2 {
   color: var(--primary-color);
 }
 
-.links-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .links {
   list-style: none;
   margin-bottom: 1em;
@@ -83,7 +78,7 @@ header h2 {
 }
 
 section {
-  margin: 20px 0;
+  margin: 1rem 0;
 }
 
 section>h2 {
@@ -138,7 +133,7 @@ article>div {
 }
 
 article p {
-  margin: 0.75rem;
+  margin: 0 0 0 0.75rem;
 }
 
 ul {

@@ -1,4 +1,5 @@
 code {
+  font-family: 'Fira Code', monospace;
 
   &::selection {
     background-color: rgba(255, 255, 0, 0.25);
@@ -190,7 +191,7 @@ pre.sourceCode {
 pre.sourceCode.not-numbered {
   code span:before {
     content: "";
-    margin: 1rem 0; 
+    margin: 1rem 0;
   }
 }
 
