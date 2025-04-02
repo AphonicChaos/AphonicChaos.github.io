@@ -1,5 +1,5 @@
-@import "/css/theme.css";
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+@import "/css/theme.css";
 
 /* Specify in CSS */
 * {
@@ -82,7 +82,7 @@ section {
 }
 
 section>h2 {
-  margin: 0;
+  margin: 1rem 0 0 0;
   border-bottom: 0.25rem solid var(--primary-color);
 }
 
@@ -93,12 +93,21 @@ section>p {
 .skills {
   display: grid;
   margin-left: 2rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8rem;
 }
 
 .skill>h4 {
   font-size: 14pt;
   margin-bottom: 0;
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 180px;
+  column-gap: 1.25rem;
 }
 
 section>article {
@@ -115,7 +124,7 @@ section>article {
 .title,
 .degree {
   flex-basis: 100%;
-  margin: 0 10px;
+  margin: 10px 10px 0 10px;
   color: var(--primary-color);
 }
 
@@ -145,16 +154,5 @@ ul {
 @media print {
   .page-break {
     page-break-after: always;
-  }
-}
-
-@page {
-  margin: 50px;
-}
-
-@media only screen {
-  body {
-    width: 768px;
-    margin: 20px auto
   }
 }

@@ -1,6 +1,5 @@
 ---
 title: A Little DX with Method Chaining
-draft: true
 ---
 
 Developer Experience (DX or DevEx) is to engineers what User Experience (UX) is
