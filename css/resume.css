@@ -151,6 +151,14 @@ ul {
   padding: 0 1rem;
 }
 
+.no-duration article {
+  display: block;
+
+  .company {
+    margin-bottom: 0.5rem;
+  }
+}
+
 @media print {
   .page-break {
     page-break-after: always;
