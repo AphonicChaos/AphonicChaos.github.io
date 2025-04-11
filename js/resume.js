@@ -1,7 +1,7 @@
 const SKILLS = {
   "Languages": [
-    "C",
     "Bash",
+    "C",
     "C#",
     "CSS",
     "Elixir",
@@ -10,6 +10,7 @@ const SKILLS = {
     "Java",
     "JavaScript",
     "Kotlin",
+    "PHP",
     "Python",
     "Ruby",
     "Rust",
@@ -23,11 +24,9 @@ const SKILLS = {
     "Redux",
     "SASS",
     "Tailwind",
-    "Tanstack",
     "Vite",
     "Vue",
     "Webpack",
-    "bun",
   ],
   "Backend": [
     "Django",
@@ -41,20 +40,19 @@ const SKILLS = {
     "NextJS",
     "NoSQL",
     "Node",
-    "PHP",
     "PostgreSQL",
     "Rails",
   ],
   "Devops": [
     "AWS",
     "Azure",
-    "Oracle Cloud",
     "CI/CD",
     "CircleCI",
     "Docker",
     "Heroku",
     "Jenkins",
     "Kubernetes",
+    "Oracle Cloud",
     "Pulumi",
     "Terraform",
   ],
@@ -62,9 +60,9 @@ const SKILLS = {
     "AI",
     "Agile",
     "DBT",
+    "DBT",
     "Git",
-    "React Native",
-    "WordPress",
+    "Zapier",
   ]
 };
 
