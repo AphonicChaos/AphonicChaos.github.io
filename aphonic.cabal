@@ -45,7 +45,7 @@ executable aphonic
     other-modules: Paths_aphonic
     -- other-extensions:
     build-depends:    
-        base ^>=4.20.0.0
+        base
       , text
       , megaparsec
       , aeson
