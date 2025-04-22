@@ -97,6 +97,13 @@ section>p {
   gap: 8rem;
 }
 
+@media screen and (max-width: 1200px) {
+  .skills {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
 .skill>h4 {
   font-size: 14pt;
   margin-bottom: 0;
