@@ -29,12 +29,15 @@ const SKILLS = {
     "Webpack",
   ],
   "Backend": [
+    "ASP.NET",
     "Django",
+    "Entity Framework",
     "Express",
     "FastAPI",
     "Firebase",
     "Flask",
     "Laravel",
+    "MSSQL",
     "MongoDB",
     "MySQL",
     "NGINX",
@@ -76,11 +79,8 @@ const SKILLS = {
 };
 
 const SUMMARY = [
-  `Staff Full Stack Engineer with over a decade of industry experince on top of 
-  another decade of open source contributions.`,
-  `High-impact individual contributor who is able to work autonomously, but also
-  an effective leader who believes that effective products are built by effective 
-  teams.`,
+  `I excel at designing elegant, pragmatic solutions to deeply-rooted architectural 
+   problems in order to help platforms and teams work more effectively.`
 ];
 
 const SUMMARY_SECTION = document.querySelector("#summary");
