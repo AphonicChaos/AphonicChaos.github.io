@@ -1,81 +1,92 @@
 const SKILLS = {
-  "Languages": [
-    "Bash",
-    "C",
-    "C#",
-    "CSS",
-    "Elixir",
-    "HTML",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Kotlin",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Rust",
-    "SQL",
-    "TypeScript",
-  ],
-  "Frontend": [
+  "Expert": [
+    "Agile",
     "Bootstrap",
-    "Ember",
-    "React",
-    "Redux",
-    "SASS",
-    "Tailwind",
-    "Vite",
-    "Vue",
-    "Webpack",
-  ],
-  "Backend": [
-    "ASP.NET",
-    "Django",
-    "Entity Framework",
-    "Express",
-    "FastAPI",
-    "Firebase",
-    "Flask",
-    "Laravel",
-    "MSSQL",
-    "MongoDB",
-    "MySQL",
-    "NGINX",
-    "NextJS",
-    "NoSQL",
-    "Node",
-    "PostgreSQL",
-    "Rails",
-  ],
-  "Devops": [
-    "AWS",
-    "Azure",
     "CI/CD",
+    "CSS",
     "CircleCI",
     "CloudFront",
+    "Django",
     "Docker",
     "EC2",
     "ECS",
+    "Express",
+    "FastAPI",
+    "Flask",
+    "Git",
+    "HTML",
+    "Haskell",
     "Heroku",
+    "JavaScript",
     "Jenkins",
+    "MongoDB",
+    "MySQL",
+    "NoSQL",
+    "Node",
+    "PostgreSQL",
+    "Python",
+    "RDS",
+    "React",
+    "Redux",
+    "SASS",
+    "SNS",
+    "SQL",
+    "SQS",
+    "Tailwind",
+    "TypeScript",
+    "Vite",
+  ],
+  "Advanced": [
+    "AWS",
+    "Airflow",
+    "Bash",
+    "DataDog",
+    "Jira",
     "Kubernetes",
     "Lambda",
+    "Laravel",
+    "MSSQL",
     "Oracle Cloud",
+    "PHP",
     "Pulumi",
-    "RDS",
+    "Rails",
     "Route 53",
-    "SNS",
-    "SQS",
+    "Ruby",
     "Terraform",
+    "Webpack",
+    "GitHub Actions",
+    "Copilot",
+    "CloudFormation",
   ],
-  "Other": [
+  "Intermediate": [
     "AI",
-    "Agile",
+    "ASP.NET",
+    "Azure",
+    "C",
+    "C#",
     "DBT",
-    "DBT",
-    "Git",
+    "Ember",
+    "Entity Framework",
+    "Figma",
+    "Firebase",
+    "Go",
+    "GPC",
+    "Kafka",
+    "Java",
+    "Lua",
+    "NGINX",
+    "NextJS",
+    "Prompt Engineering",
+    "PureScript",
+    "Rust",
     "Zapier",
-  ]
+  ],
+  "Beginner": [
+    "Deep Learning",
+    "Elixir",
+    "Kotlin",
+    "Vue",
+  ],
 };
 
 const SUMMARY = [
@@ -104,13 +115,16 @@ function populateSkills() {
     const categoryDiv = document.createElement("div");
     categoryDiv.classList.add("skill");
     const skillItems = SKILLS[category].map(
-      skill => `<li> ${skill}</li> `
+      (skill, index) => {
+        const punctuation = index === SKILLS[category].length - 1 ? "." : ",";
+        return `<span> ${skill}${punctuation} </span> `;
+      }
     ).join("\n");
     categoryDiv.innerHTML = `
   <h4> ${category}</h4>
-  <ul>
+  <p>
     ${skillItems}
-  </ul>
+  </p>
     `;
 
     SKILLS_SECTION.appendChild(categoryDiv);

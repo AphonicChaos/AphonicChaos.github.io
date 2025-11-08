@@ -91,30 +91,13 @@ section>p {
 }
 
 .skills {
-  display: grid;
   margin: 0 2rem;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8rem;
-}
 
-@media screen and (max-width: 1200px) {
-  .skills {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
 }
 
 .skill>h4 {
   font-size: 14pt;
   margin-bottom: 0;
-}
-
-.skills ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  height: 180px;
-  column-gap: 1.25rem;
 }
 
 section>article {
@@ -150,12 +133,6 @@ article>div {
 
 article p {
   margin: 0 0 0 0.75rem;
-}
-
-ul {
-  flex-basis: 100%;
-  margin: 10px 0 0 0;
-  padding: 0 1rem;
 }
 
 .no-duration article {
