@@ -148,3 +148,9 @@ article p {
     page-break-after: always;
   }
 }
+
+@media only screen {
+  .redacted {
+    display: none
+  }
+}
